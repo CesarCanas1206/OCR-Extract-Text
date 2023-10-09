@@ -21,7 +21,9 @@ def extract_text(image_path):
 	custom_config = r'-l eng'
 	text = pytesseract.image_to_string(x, config=custom_config)
 	os.remove(filename)
-	print(text)
+	result_txt = "{}.txt".format(os.getpid())
+	with open(result_txt,'w') as file:
+		file.write(text)
 	cv2.waitKey(0)
  
 image_path = 'a.jpg'
